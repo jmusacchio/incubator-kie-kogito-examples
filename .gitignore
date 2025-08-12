@@ -1,5 +1,6 @@
 bin/
 /target
+/build
 /local
 
 # Eclipse, Netbeans and IntelliJ files
@@ -10,6 +11,7 @@ bin/
 !.github
 nbproject
 target
+build
 /*.ipr
 /*.iws
 *.iml
