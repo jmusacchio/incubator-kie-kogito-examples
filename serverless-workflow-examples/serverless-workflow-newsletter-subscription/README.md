@@ -36,7 +36,7 @@ You can run it locally using Maven and Java:
 
 1. Compile the whole application with:
 ```
-mvn clean install -DskipTests
+gradle clean build -DskipTests
 ```
 2. In a new terminal, run the Subscription Service via:
 ```
@@ -68,7 +68,7 @@ In this example we use a regular, in-memory, broker. Feel free to adapt the exam
 1. Install [minikube](https://minikube.sigs.k8s.io/docs/start/)
 2. Install Knative using the [quickstarts](https://knative.dev/docs/getting-started/) since a DNS will be configured for you.
 3. Run `eval $(minikube -p minikube docker-env --profile knative)` to build the images in your internal Minikube registry.
-4. Run `mvn clean install -Pknative`. All resources needed to run the example will be generated for you.
+4. Run `gradle clean build -Pknative`. All resources needed to run the example will be generated for you.
 
 Deploy the services with the following command:
 

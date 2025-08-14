@@ -19,7 +19,7 @@ orchestrate any services you want.
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need: 
   - [GraalVm](https://www.graalvm.org/downloads/) 19.3.1+ installed
@@ -32,7 +32,7 @@ First you need to start the `sw-funqy-services` module:
 
 ```sh
 cd sw-funqy-services
-mvn clean install quarkus:dev
+gradle clean build quarkus:dev
 ```
 
 this service will start on port 8082
@@ -41,7 +41,7 @@ Then we need to start our workflow service, namely `sw-funqy-workflow`
 
 ```sh
 cd sw-funqy-workflow
-mvn clean install quarkus:dev
+gradle clean build quarkus:dev
 ```
 
 Now access the demo UI on:

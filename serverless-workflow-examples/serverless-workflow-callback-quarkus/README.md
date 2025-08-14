@@ -52,7 +52,7 @@ In this way a container for PostgreSQL will be started on port 5432.
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
   - Docker and Docker Compose to run the required example infrastructure.
 
 When using native image compilation, you will also need: 
@@ -66,7 +66,7 @@ NOTE: Quarkus provides a way of creating a native Linux executable without Graal
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean package quarkus:dev
+gradle clean assemble quarkus:dev
 ```
 
 ### Start infrastructure services
@@ -74,7 +74,7 @@ mvn clean package quarkus:dev
 You should start all the services before you execute any of the **Callback** example, to do that please execute:
 
 ```sh
-mvn clean package -Pcontainer
+gradle clean assemble -Pcontainer
 ```
 
 For Linux and MacOS:
@@ -105,7 +105,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - PgAdmin: 8055
 - sw-callback-service :8080
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean package -Dcontainer``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean assemble -Dcontainer``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose -f docker-compose.yml stop```.
 
@@ -116,7 +116,7 @@ All created containers can be removed by executing the ```docker-compose -f dock
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
   
 To run the generated native executable, generated in `target/`, execute

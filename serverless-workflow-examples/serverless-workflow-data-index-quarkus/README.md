@@ -52,7 +52,7 @@ In this way a container for PostgreSQL will be started on port 5432.
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
   - Docker and Docker Compose to run the required example infrastructure.
 
 When using native image compilation, you will also need: 
@@ -66,18 +66,18 @@ NOTE: Quarkus provides a way of creating a native Linux executable without Graal
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean package quarkus:dev
+gradle clean assemble quarkus:dev
 ```
 Here we can run the dev mode in two scenarios:
 1. Starting dev mode with kogito-addons-quarkus-data-index. It means the Data Index functionality will be exposed as part of the runtime service, no specific service started for audit data:
 ```sh
-mvn clean package quarkus:dev -Pdata-index-addon
+gradle clean assemble quarkus:dev -Pdata-index-addon
 ```
 NOTE: Data Index graphql UI will be available in http://localhost:8080/q/graphql-ui/
 
 2. Starting dev mode with Data index as a Quarkus Dev service
 ```sh
-mvn clean package quarkus:dev -Pdata-index-devservice
+gradle clean assemble quarkus:dev -Pdata-index-devservice
 ```
 
 NOTE: Data Index graphql UI will be available in http://localhost:8180/q/graphql-ui/
@@ -88,7 +88,7 @@ NOTE: Data Index graphql UI will be available in http://localhost:8180/q/graphql
 You should start all the services before you execute any of the **Data Index** example. To do that please execute:
 
 ```sh
-mvn clean package -P container,data-index-addon 
+gradle clean assemble -P container,data-index-addon 
 ```
 
 For Linux and MacOS:
@@ -118,7 +118,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - PgAdmin: 8055
 - serverless-workflow-service: 8080
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean package -P container,data-index-addon``` command on the project root before running the ```docker-compose up``` for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean assemble -P container,data-index-addon``` command on the project root before running the ```docker-compose up``` for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose -f docker-compose.yml stop```.
 
@@ -130,7 +130,7 @@ This example provides also the configuration needed to see the dataindex deploye
 - Execute
 
 ```sh
-mvn clean package -Ddata-index-standalone
+gradle clean assemble -Ddata-index-standalone
 ```
 
 - Run docker-compose to start all the services:
@@ -155,7 +155,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - DataIndex: 8180
 - serverless-workflow-service: 8080
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean package -Ddata-index-standalone``` command on the project root before running the ```./startServices.sh.``` for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean assemble -Ddata-index-standalone``` command on the project root before running the ```./startServices.sh.``` for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose -f docker-compose-with-data-index.yml stop```.
 
@@ -164,14 +164,14 @@ All created containers can be removed by executing the ```docker-compose -f dock
 ### Compile and Run in JVM mode
 
 ```sh
-mvn clean package 
+gradle clean assemble 
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on Windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -179,7 +179,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Dnative
+gradle clean assemble -Dnative
 ```
   
 To run the generated native executable, generated in `target/`, execute

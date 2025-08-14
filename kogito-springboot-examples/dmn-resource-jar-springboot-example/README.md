@@ -14,20 +14,20 @@ Demonstrates DMN on Kogito capabilities, including REST interface code generatio
 You will need:
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 ### Compile and Run
 
 ```sh
-mvn clean install
+gradle clean build
 cd ./dmn-springboot-consumer-example
-mvn spring-boot:run
+gradle bootRun
 ```
 
 ### Package and Run
 
 ```sh
-mvn clean install
+gradle clean build
 cd ./dmn-springboot-consumer-example
 java -jar ./target/dmn-springboot-consumer-example.jar
 ```
@@ -40,7 +40,7 @@ To define test scenarios you need to create a .scesim file inside your project a
 
 ```sh
 cd ./dmn-springboot-consumer-example
-mvn clean test
+gradle clean test
 ```
 See results in surefire test report `target/surefire-reports` 
 

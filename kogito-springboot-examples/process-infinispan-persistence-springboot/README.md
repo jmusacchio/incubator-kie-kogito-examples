@@ -70,14 +70,14 @@ You can install Infinispan server by downloading version 12.x from the [official
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 Kogito runtimes need to be able to safely handle concurrent requests to shared instances such as process instances, tasks, etc. This feature is optional and can be pluggable with persistence using the following property and value to the src/main/resources/application.properties file.
@@ -90,7 +90,7 @@ Additionally, you can build this project with -PpersistenceWithLock  profile to 
 ### Package and Run using uberjar
 
 ```sh
-mvn clean package
+gradle clean assemble
 ```
 
 To run the generated native executable, generated in `target/`, execute

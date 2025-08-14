@@ -19,7 +19,7 @@ and returns the sum.
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need: 
   - [GraalVm](https://www.graalvm.org/downloads/) 20.2.0+ installed
@@ -29,20 +29,20 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```text
-mvn clean package quarkus:dev    
+gradle clean assemble quarkus:dev    
 ```
 
 ### Compile and Run in JVM mode
 
 ```text
-mvn clean package 
+gradle clean assemble 
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```text
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -55,7 +55,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```text
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
   
 To run the generated native executable, generated in `target/`, execute

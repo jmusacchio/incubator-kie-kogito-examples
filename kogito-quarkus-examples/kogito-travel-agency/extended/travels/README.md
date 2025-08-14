@@ -115,7 +115,7 @@ There will be services implemented to carry on the hotel and flight booking. Imp
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need:
   - GraalVM 19.3.1+ installed
@@ -150,7 +150,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - Data Index: 8180
 - Keycloak server: 8480
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean install``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean build``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose stop```.
 
@@ -172,14 +172,14 @@ Once Keycloak is started, you should be able to access your *Keycloak Server* at
 ### Compile and Start the process
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean package quarkus:dev    
+gradle clean assemble quarkus:dev    
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules and decision
@@ -189,7 +189,7 @@ tables and java code. No need to redeploy or restart your running application.Du
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute

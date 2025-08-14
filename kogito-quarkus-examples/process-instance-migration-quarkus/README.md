@@ -37,7 +37,7 @@ The modified version of this simple process has own additional script task **aft
 
 * Java 17+ installed
 * Environment variable JAVA_HOME set accordingly
-* Maven 3.9.3+ installed
+* Gradle 7.6.4+ installed
 * Docker and Docker Compose to run the required example infrastructure.
 
 And when using native image compilation, you will also need:
@@ -64,7 +64,7 @@ folder.
 
 To build the example, on a Terminal, run the following command:
 ```shell
-mvn clean package -Pcontainer
+gradle clean assemble -Pcontainer
 ```
 This will build the example quarkus application and create a Docker image that will be started in the `docker-compose` template.
 
@@ -81,7 +81,7 @@ you can run the same `startServices.sh` script but passing the `example` argumen
 sh startServices.sh example
 ```
 
-> **_NOTE:_**  starting the Infrastructure Services, please consider running a ```mvn clean package -Pcontainer```
+> **_NOTE:_**  starting the Infrastructure Services, please consider running a ```gradle clean assemble -Pcontainer```
 > command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
 
 ### Running the example in Development mode
@@ -89,7 +89,7 @@ sh startServices.sh example
 To run the example in Development mode, just run the following command in a Terminal:
 
 ```shell
-mvn clean package quarkus:dev -Pdevelopment
+gradle clean assemble quarkus:dev -Pdevelopment
 ```
 
 The Development Mode will embed all the needed Infrastructure Services (PostgreSQL, Data-Index & Jobs Service) and won't 

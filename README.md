@@ -19,7 +19,7 @@ The examples that use Quarkus use the Quarkus core BOM by default.
 If you want to use an alternative BOM when building the Apache KIE Quarkus quickstarts you can override the `quarkus.platform.*` properties. The following example shows how to set `quarkus.platform.artifact-id` to use the quarkus-universe-bom.
 
 ```
-mvn -Dquarkus.platform.artifact-id=quarkus-universe-bom clean install
+gradle -Dquarkus.platform.artifact-id=quarkus-universe-bom clean build
 ```
 Currently, only [Drools](https://github.com/apache/incubator-kie-drools) is part of the Quarkus Platform.
 > Note: Integration of Kogito and Sonataflow are in progress.

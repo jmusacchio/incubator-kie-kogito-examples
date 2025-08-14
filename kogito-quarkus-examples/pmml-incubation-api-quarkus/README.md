@@ -19,12 +19,12 @@ The custom REST endpoint evaluates a PMML that computes a linear regression:
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile quarkus:dev
+gradle clean compileJava quarkus:dev
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
@@ -32,7 +32,7 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 

@@ -111,27 +111,27 @@ The DMN file where this decision is declared is [TrafficViolation.dmn](src/main/
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.1+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean spring-boot:run
+gradle clean bootRun
 ```
 
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/process-decisions-springboot.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\process-decisions-springboot.jar
 ```
 

@@ -11,20 +11,20 @@ An injectable KieRuntimeBuilder is generated, so you can create Drools v7 KieBas
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/rules-legacy-springboot-example.jar
 ```
 

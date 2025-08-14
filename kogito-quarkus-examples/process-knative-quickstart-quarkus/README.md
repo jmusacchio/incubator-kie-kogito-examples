@@ -80,7 +80,7 @@ You will need:
 
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need:
 
@@ -93,7 +93,7 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```sh
-K_SINK=http://localhost:8181 mvn clean compile quarkus:dev
+K_SINK=http://localhost:8181 gradle clean compileJava quarkus:dev
 ```
 
 [`K_SINK` is the environment variable injected by the Knative Eventing platform](https://knative.dev/docs/eventing/samples/sinkbinding/#create-our-sinkbinding)
@@ -108,14 +108,14 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -128,7 +128,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute
@@ -165,7 +165,7 @@ This is the same image used by Knative Eventing demos. It's running on port 8181
 Then run the application with:
 
 ```shell script
-$ K_SINK=http://localhost:8181 mvn clean quarkus:dev
+$ K_SINK=http://localhost:8181 gradle clean quarkus:dev
 
 2021-05-18 14:50:47,574 INFO  [org.kie.kog.cod.api.uti.AddonsConfigDiscovery] (build-24) Performed addonsConfig discovery, found: AddonsConfig{usePersistence=false, useTracing=false, useMonitoring=false, usePrometheusMonitoring=false, useCloudEvents=true, useExplainability=false, useProcessSVG=false}
 2021-05-18 14:50:47,777 INFO  [org.kie.kog.cod.cor.uti.ApplicationGeneratorDiscovery] (build-24) Generator discovery performed, found [openapispecs, processes, rules, decisions, predictions]
@@ -249,7 +249,7 @@ Just make sure your cluster has [Knative Eventing available](https://knative.dev
 1. [Install Knative](https://knative.dev/docs/getting-started/)
 2. Install the `KogitoSource` [via command line](https://github.com/knative-sandbox/eventing-kogito#installation).
 3. Run `eval $(minikube docker-env)` to build the image directly into the Minikube registry.
-4. Run `mvn clean install -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
+4. Run `gradle clean build -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
 5. Apply the objects created for you with `kubectl apply -f target/kubernetes/*.yml`. It will deploy the objects from `knative.yml` and `kogito.yml` generated files.
 6. Run `curl` from the terminal like you did in the previously steps. To see what's going on, just query for the Knative service `event-display`. You should see something like:
 

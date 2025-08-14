@@ -10,7 +10,7 @@ Once the gRPC server is running, you can run the quarkus application following s
 To build both server and client containers use:
 
 ```bash
-$ mvn clean package -Dcontainer
+$ gradle clean assemble -Dcontainer
 ```
 
 Once the build finishes, access the `docker` directory and execute:

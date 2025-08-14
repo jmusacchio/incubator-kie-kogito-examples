@@ -14,9 +14,9 @@ The main goal behind the addon is to allow Kogito DRL services to be used as par
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
   - [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) installed
 
 ### Enable The AddOn
@@ -63,20 +63,20 @@ Once everything is started you can check the data contained in your small Kafka 
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run in JVM mode
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target/ruleunit-event-driven-springboot.jar
 ```
 
 or on Windows
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target\ruleunit-event-driven-springboot.jar
 ```
 

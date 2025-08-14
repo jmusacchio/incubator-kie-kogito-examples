@@ -28,7 +28,7 @@ You will need:
 
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need:
 
@@ -41,7 +41,7 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```sh
-K_SINK=http://localhost:8181 mvn clean compile quarkus:dev
+K_SINK=http://localhost:8181 gradle clean compileJava quarkus:dev
 ```
 
 [`K_SINK` is the environment variable injected by the Knative Eventing platform](https://knative.dev/docs/eventing/samples/sinkbinding/#create-our-sinkbinding)
@@ -58,14 +58,14 @@ to redeploy or restart your running application.
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -74,7 +74,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute
@@ -96,7 +96,7 @@ This is the same image used by Knative Eventing demos. It's running on port 8181
 Then run the application with:
 
 ```shell script
-$ K_SINK=http://localhost:8181 mvn clean quarkus:dev
+$ K_SINK=http://localhost:8181 gradle clean quarkus:dev
 
 2021-07-05 17:09:09,415 INFO  [org.kie.kog.cod.api.uti.AddonsConfigDiscovery] (build-12) Performed addonsConfig discovery, found: AddonsConfig{usePersistence=false, useTracing=false, useMonitoring=false, usePrometheusMonitoring=false, useCloudEvents=true, useExplainability=false, useProcessSVG=false, useEventDrivenDecisions=true}
 2021-07-05 17:09:09,418 INFO  [org.kie.kog.cod.cor.uti.ApplicationGeneratorDiscovery] (build-12) Generator discovery performed, found [openapispecs, decisions]

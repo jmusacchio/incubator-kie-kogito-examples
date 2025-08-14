@@ -16,7 +16,7 @@ The service is described using JSON format as defined in the
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6++ installed
+  - Gradle 7.6.4+ installed
     When using native image compilation, you will also need:
   - [GraalVm](https://www.graalvm.org/downloads/) 22.3.0+ installed
   - Environment variable GRAALVM_HOME set accordingly
@@ -50,7 +50,7 @@ kubectl create ns custom-functions
 From the `custom-function-knative-service` directory run:
 
 ```sh
-mvn clean package -Dcontainer
+gradle clean assemble -Dcontainer
 ```
 
 ```sh
@@ -75,7 +75,7 @@ custom-function-knative-service   http://custom-function-knative-service.custom-
 From the `workflow` directory run:
 
 ```sh
-mvn clean package -Dcontainer
+gradle clean assemble -Dcontainer
 ```
 
 ```sh

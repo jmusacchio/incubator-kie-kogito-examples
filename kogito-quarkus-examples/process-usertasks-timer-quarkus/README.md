@@ -22,7 +22,7 @@ The required *Kogito and Infrastructure Services* for this example are:
 
 * Java 17+ installed
 * Environment variable JAVA_HOME set accordingly
-* Maven 3.9.6+ installed
+* Gradle 7.6.4+ installed
 * Docker and Docker Compose to run the required example infrastructure.
 
 And when using native image compilation, you will also need: 
@@ -46,7 +46,7 @@ First thing is to compile the example with the postgresql profile executing:
 - Open a Terminal
 - Go to the example folder and run
 ```sh
-mvn clean install -Ppostgresql
+gradle clean build -Ppostgresql
 ```
 
 #### Start infrastructure services
@@ -75,7 +75,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - Jobs Service: 8580
 - PgAdmin: 8055
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean install``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean build``` command on the project root before running the ```startServices.sh``` script for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose -f docker-compose-postgresql.yml stop```.
 
@@ -92,7 +92,7 @@ Once all the infrastructure services are ready, you can start the Hiring example
 - Start the example with the command
 
 ```bash
-mvn clean package quarkus:dev -Ppostgresql
+gradle clean assemble quarkus:dev -Ppostgresql
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
@@ -100,14 +100,14 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ##### Package and Run in JVM mode
 
 ```sh
-mvn clean package -Ppostgresql
+gradle clean assemble -Ppostgresql
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package -Ppostgresql
+gradle clean assemble -Ppostgresql
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -120,7 +120,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative -Ppostgresql
+gradle clean assemble -Pnative -Ppostgresql
 ```
 
 To run the generated native executable, generated in `target/`, execute
@@ -138,7 +138,7 @@ First thing is to compile the example with the infinispan profile executing:
 1. Open a Terminal
 2. Go to the example folder and run
 ```sh
-mvn clean install -Pinfinispan
+gradle clean build -Pinfinispan
 ```
 #### Start infrastructure services
 
@@ -159,7 +159,7 @@ Once all services bootstrap, the following ports will be assigned on your local 
 - Data Index: 8180
 - Jobs Service: 8580
 
-> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```mvn clean install -Pinfinispan``` command on the project root before running the ```startServices.sh infinispan``` script for the first time or any time you modify the project.
+> **_NOTE:_**  This step requires the project to be compiled, please consider running a ```gradle clean build -Pinfinispan``` command on the project root before running the ```startServices.sh infinispan``` script for the first time or any time you modify the project.
 
 Once started you can simply stop all services by executing the ```docker-compose -f docker-compose-infinispan.yml stop```.
 
@@ -176,7 +176,7 @@ Once all the infrastructure services are ready, you can start the Hiring example
 - Start the example with the command
 
 ```bash
-mvn clean package quarkus:dev -Pinfinispan
+gradle clean assemble quarkus:dev -Pinfinispan
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
@@ -184,14 +184,14 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ##### Package and Run in JVM mode
 
 ```sh
-mvn clean package -Pinfinispan
+gradle clean assemble -Pinfinispan
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package -Pinfinispan
+gradle clean assemble -Pinfinispan
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -199,7 +199,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative -Pinfinispan
+gradle clean assemble -Pnative -Pinfinispan
 ```
 
 To run the generated native executable, generated in `target/`, execute

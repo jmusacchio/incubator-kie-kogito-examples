@@ -94,18 +94,18 @@ This example also features the `org.kie.dmn.runtime.typecheck` environment varia
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar ./target/dmn-15-springboot-example.jar
 ```
 

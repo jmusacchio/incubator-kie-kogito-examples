@@ -63,7 +63,7 @@ Also, there is the Swagger UI that can also be used to explore the APIs in this 
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need: 
   - [GraalVm](https://www.graalvm.org/downloads/) 20.2.0+ installed
@@ -73,7 +73,7 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean package quarkus:dev
+gradle clean assemble quarkus:dev
 ```
 
 Use `curl` command to send the CloudEvent through HTTP to the application:
@@ -133,14 +133,14 @@ _**Note:** Please make sure you have [jq](https://stedolan.github.io/jq/download
 ### Compile and Run in JVM mode
 
 ```sh
-mvn clean package 
+gradle clean assemble 
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on Windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -148,7 +148,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
   
 To run the generated native executable, generated in `target/`, execute
@@ -165,7 +165,7 @@ to get started.
 1. [Install Knative](https://knative.dev/docs/getting-started/)
 2. Install the `KogitoSource` [via command line](https://github.com/knative-sandbox/eventing-kogito#installation).
 3. Run `eval $(minikube docker-env)` to build the image directly into the Minikube registry.
-4. Run `mvn clean install -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
+4. Run `gradle clean build -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
 5. Apply the objects created for you with `kubectl apply -f target/kubernetes/*.yml`. It will deploy the objects from `knative.yml` and `kogito.yml` generated files.
 6. Run `curl` from the terminal like you did in the previously steps.
 

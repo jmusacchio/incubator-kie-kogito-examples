@@ -45,21 +45,21 @@ This example shows
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 
 ### Package and Run using uberjar
 
 ```sh
-mvn clean package
+gradle clean assemble
 ```
 
 To run the generated native executable, generated in `target/`, execute

@@ -11,11 +11,11 @@ This module contains a simple greeting gRPC server definition and implementation
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run 
 
 ```sh
-mvn compile exec:java -Dexec.mainClass="org.kie.kogito.examples.sw.greeting.GreeterService"
+gradle compileJava exec:java -Dexec.mainClass="org.kie.kogito.examples.sw.greeting.GreeterService"
 ```
 

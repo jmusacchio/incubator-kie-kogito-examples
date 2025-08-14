@@ -24,7 +24,7 @@ This example shows
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
   - [jq](https://stedolan.github.io/jq) tool installed. You can download it from [here](https://stedolan.github.io/jq/download)
   - Docker
 
@@ -54,7 +54,7 @@ user:
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean compile quarkus:dev
+gradle clean compileJava quarkus:dev
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
@@ -62,14 +62,14 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -82,7 +82,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute

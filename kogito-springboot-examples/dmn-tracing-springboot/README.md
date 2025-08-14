@@ -9,9 +9,9 @@ A simple DMN service to evaluate a loan approval and generate tracing events tha
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Configuration of the tracing addon
 
@@ -28,20 +28,20 @@ Edit the `application.properties` file to change the configuration. The property
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run in JVM mode
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target/dmn-tracing-springboot.jar
 ```
 
 or on Windows
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target\dmn-tracing-springboot.jar
 ```
 

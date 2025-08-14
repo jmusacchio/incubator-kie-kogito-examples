@@ -43,27 +43,27 @@ will terminate.
 
 You will need:
 
-* Java 11+ installed
+* Java 17+ installed
 * Environment variable JAVA_HOME set accordingly
-* Maven 3.8.6+ installed
+* Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/flexible-process-springboot.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\flexible-process-springboot.jar
 ```
 

@@ -17,7 +17,7 @@ Once the minikube environment is running, open a terminal window, go to the serv
 ```shell
 eval $(minikube -p knative docker-env)
 
-mvn clean package -Pknative
+gradle clean assemble -Pknative
 ```
 
 ### Creating the namespace

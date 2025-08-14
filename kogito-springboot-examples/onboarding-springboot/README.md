@@ -28,9 +28,9 @@ interaction with HR and payroll.
 
 You will need:
 
-- Java 11+ installed
+- Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.8.6+ installed
+- Gradle 7.6.4+ installed
 
 ### Installation
 
@@ -43,7 +43,7 @@ Please follow the instruction for each of the individual services. It is recomme
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean package spring-boot:run
+gradle clean assemble spring-boot:run
 ```
 
 ### Running with persistence enabled
@@ -97,7 +97,7 @@ This project is configured to run with JKube Maven plugin. You can simply run:
 $ eval $(minikube -p minikube docker-env)
 
 # build the service, the image and deploy it on Minikube:
-$ mvn clean install k8s:deploy -Pkubernetes
+$ gradle clean build k8s:deploy -Pkubernetes
 ```
 
 If you wish to only generate the image, you can use `k8s:build` instead. To generate the Kubernetes resources
@@ -139,7 +139,7 @@ Run the commands bellow to deploy the Knative service:
 $ eval $(minikube -p minikube docker-env)
 
 # build the service, the image and the other resources:
-$ mvn k8s:resource -Pkubernetes
+$ gradle k8s:resource -Pkubernetes
 
 # apply the other resources
 $ kubectl apply -f target/classes/META-INF/jkube/onboarding-springboot-service.yml

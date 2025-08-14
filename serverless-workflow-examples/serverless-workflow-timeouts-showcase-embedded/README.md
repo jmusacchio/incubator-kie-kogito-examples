@@ -17,7 +17,7 @@ Once the minikube environment is running, open a terminal window, go to the serv
 ```shell
 eval $(minikube -p knative docker-env)
 
-mvn clean package -Pknative
+gradle clean assemble -Pknative
 ```
 
 ### Deploying the workflows
@@ -199,7 +199,7 @@ kn service delete timeouts-showcase-embedded
 To run the example in the Quarkus dev mode you must execute this command:
 
 ```shell
-mvn clean package quarkus:dev
+gradle clean assemble quarkus:dev
 ```
 After this, the application will be available at http://localhost:8080
 

@@ -3,11 +3,11 @@
 To allow a quick setup of all services required to run this demo, we provide a docker compose template that starts the following services:
 - Postgresql
 - PgAdmin
-- Kogito Process Instance Migration Service (Only available if the example has been compiled using the `container` mvn profile eg: ```mvn clean package -Pcontainer```)
+- Kogito Process Instance Migration Service (Only available if the example has been compiled using the `container` gradle profile eg: ```gradle clean assemble -Pcontainer```)
 
 The docker compose template provides three profiles to enable starting only the set of services you want to use. The profiles are:
 - **infra**: Starts only the minimal infrastructure to run the example (Postgresql, pgadmin)
-- **example**: Starts the services in *infra* profile and the Kogito Example Service. Requires the example to be compiled using the `container` mvn profile eg: ```mvn clean package -Pcontainer```.
+- **example**: Starts the services in *infra* profile and the Kogito Example Service. Requires the example to be compiled using the `container` gradle profile eg: ```gradle clean assemble -Pcontainer```.
 
 > NOTE: In order to use it, please ensure you have Docker Compose installed on your machine, otherwise follow the instructions available
 in [here](https://docs.docker.com/compose/install/).

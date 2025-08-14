@@ -41,7 +41,7 @@ receiving your events.
 You will need:
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 When using native image compilation, you will also need:
 - GraalVM 19.3+ installed
@@ -52,7 +52,7 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```sh
-K_SINK=http://localhost:8181 mvn clean compile quarkus:dev
+K_SINK=http://localhost:8181 gradle clean compileJava quarkus:dev
 ```
 
 [`K_SINK` is the environment variable injected by the Knative Eventing platform](https://knative.dev/docs/eventing/samples/sinkbinding/#create-our-sinkbinding)
@@ -68,14 +68,14 @@ For local tests we will mock the endpoint where the produced messages supposed t
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on Windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -83,7 +83,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute
@@ -120,7 +120,7 @@ This is the same image used by Knative Eventing demos. It's running on port 8181
 Then run the application with:
 
 ```shell script
-$ K_SINK=http://localhost:8181 mvn clean quarkus:dev
+$ K_SINK=http://localhost:8181 gradle clean quarkus:dev
 
 __  ____  __  _____   ___  __ ____  ______ 
  --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
@@ -242,7 +242,7 @@ Just make sure your cluster has [Knative Eventing available](https://knative.dev
 1. [Install Knative](https://knative.dev/docs/getting-started/)
 2. Install the `KogitoSource` [via command line](https://github.com/knative-sandbox/eventing-kogito#installation).
 3. Run `eval $(minikube docker-env)` to build the image directly into the Minikube registry. 
-4. Run `mvn clean install -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
+4. Run `gradle clean build -Pknative -Dnamespace=<your namespace>` to build the image and the Knative resources for your application to run.
 5. Apply the objects created for you with `kubectl apply -f target/kubernetes/knative.yml,target/kubernetes/kogito.yml`. It will deploy the objects from `knative.yml` and `kogito.yml` generated files.
 6. Run `curl` from the terminal like you did in the previously steps. 
    To see what's going on, just query for one of the Knative service sinks created on step #5. 

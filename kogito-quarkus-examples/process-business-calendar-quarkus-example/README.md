@@ -67,12 +67,12 @@ The final step where the payment is settled successfully on manual verification.
 You will need:
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile quarkus:dev
+gradle clean compileJava quarkus:dev
 ```
 
 NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
@@ -80,14 +80,14 @@ NOTE: With dev mode of Quarkus you can take advantage of hot reload for business
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -242,7 +242,7 @@ curl -X GET http://localhost:8080/BusinessCalendarCreditBill \
 ## Testing with calendar.properties (During non-working hours/Specified Holiday)
 **Note**: The test was performed considering 24-hour workday properties with configured holiday i.e., business.holidays=2024-11-07
 
-* After calendar.properties file is added, build the example again "mvn clean compile quarkus:dev" or type 's' in the quarkus terminal and hit enter just to restart.
+* After calendar.properties file is added, build the example again "gradle clean compileJava quarkus:dev" or type 's' in the quarkus terminal and hit enter just to restart.
 
 * POST/ BusinessCalendarCreditBill
 ```sh
@@ -344,7 +344,7 @@ public class CustomCalendar implements BusinessCalendar {
 To verify that your custom implementation works:
 1.	Run:
 
-```mvn clean compile quarkus:dev```
+```gradle clean compileJava quarkus:dev```
 
 - Verify in generated sources within target folder if it reflects the expected change
 <p align="center"><img width=75% height=50% src="docs/images/CustomCalendarClass.png"></p>

@@ -21,7 +21,7 @@ Here is the overall architecture of this example:
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
   - Apache Kafka installed
 
 When using native image compilation, you will also need: 
@@ -49,20 +49,20 @@ In this way a container for Kafka will be started on port 9092.
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile quarkus:dev
+gradle clean compileJava quarkus:dev
 ```
 
 ### Package and Run in JVM mode
 
 ```sh
-mvn clean package 
+gradle clean assemble 
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on Windows
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -70,7 +70,7 @@ java -jar target\quarkus-app\quarkus-run.jar
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```sh
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
   
 To run the generated native executable, generated in `target/`, execute

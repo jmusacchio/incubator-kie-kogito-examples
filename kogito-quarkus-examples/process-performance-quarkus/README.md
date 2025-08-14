@@ -20,7 +20,7 @@ Kafka cluster installed and available over the network. Refer to [Kafka Apache s
 You will need:
   - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.9.6+ installed
+  - Gradle 7.6.4+ installed
   - Apache Kafka 
 
 When using native image compilation, you will also need:
@@ -31,20 +31,20 @@ When using native image compilation, you will also need:
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean compile quarkus:dev
+gradle clean compileJava quarkus:dev
 ```
 
 ### Package and Run in JVM mode
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 or on windows
 
 ```
-mvn clean package
+gradle clean assemble
 java -jar target\quarkus-app\quarkus-run.jar
 ```
 
@@ -57,7 +57,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute

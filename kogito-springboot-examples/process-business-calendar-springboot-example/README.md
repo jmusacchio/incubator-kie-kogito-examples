@@ -67,19 +67,19 @@ The final step where the payment is settled successfully on manual verification.
 You will need:
 - Java 17+ installed
 - Environment variable JAVA_HOME set accordingly
-- Maven 3.9.6+ installed
+- Gradle 7.6.4+ installed
 
 ### Compile and Run in Local Dev Mode
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 
 ### Package and Run using uberjar
 
 ```sh
-mvn clean package
+gradle clean assemble
 ```
 
 To run the generated native executable, generated in `target/`, execute
@@ -235,7 +235,7 @@ curl -X GET http://localhost:8080/BusinessCalendarCreditBill \
 ## Testing with calendar.properties (During non-working hours/Specified Holiday)
 **Note**: The test was performed considering 24-hour workday properties with configured holiday i.e., business.holidays=2024-11-07
 
-* After calendar.properties file is added, build the example again "mvn clean compile quarkus:dev" or type 's' in the quarkus terminal and hit enter just to restart.
+* After calendar.properties file is added, build the example again "gradle clean compileJava quarkus:dev" or type 's' in the quarkus terminal and hit enter just to restart.
 
 * POST/ BusinessCalendarCreditBill
 ```sh
@@ -335,11 +335,11 @@ public class CustomCalendar implements BusinessCalendar {
 To verify that your custom implementation works:
 1.	Run:
 
-```mvn clean compile spring-boot:run```
+```gradle clean compileJava spring-boot:run```
 
 or
 
-```mvn clean package```
+```gradle clean assemble```
 
 ```java -jar target/process-business-rules-springboot.jar```
 

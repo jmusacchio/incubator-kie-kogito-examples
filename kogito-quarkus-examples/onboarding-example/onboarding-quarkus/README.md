@@ -13,7 +13,7 @@ interaction with HR and payroll.
 ### Compile and Run in Local Dev Mode
 
 ```
-mvn clean package quarkus:dev    
+gradle clean assemble quarkus:dev    
 ```
 
 ### Compile and Run using Local Native Image
@@ -25,7 +25,7 @@ quarkus.native.auto-service-loader-registration=true
 Note that this requires GRAALVM_HOME to point to a valid GraalVM installation
 
 ```
-mvn clean package -Pnative
+gradle clean assemble -Pnative
 ```
 
 To run the generated native executable, generated in `target/`, execute:
@@ -105,7 +105,7 @@ This project is configured to run with Quarkus Kubernetes extensions. You can si
 $ eval $(minikube -p minikube docker-env)
 
 # build the service, the image and deploy it on Minikube:
-$ mvn clean install -Pminikube
+$ gradle clean build -Pminikube
 
 # For Kubernetes or Knative just change the given profile to the respective platform (lower case).
 ```

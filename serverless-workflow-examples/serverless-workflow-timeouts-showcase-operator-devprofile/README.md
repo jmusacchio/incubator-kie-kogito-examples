@@ -278,7 +278,7 @@ Execute these commands to be sure the UI generated image is stored in the miniku
 eval $(minikube -p minikube docker-env)
 ```
 ```shell
-mvn clean package -Pkubernetes
+gradle clean assemble -Pkubernetes
 ```
 
 Finally, to deploy and access the UI you must execute these commands:

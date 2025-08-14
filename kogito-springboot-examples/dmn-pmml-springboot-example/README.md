@@ -9,20 +9,20 @@ A simple DMN + PMML service.
 ### Prerequisites
 
 You will need:
-  - Java 11+ installed
+  - Java 17+ installed
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.8.6+ installed
+  - Gradle 7.6.4+ installed
 
 ### Compile and Run
 
 ```sh
-mvn clean compile spring-boot:run
+gradle clean compileJava spring-boot:run
 ```
 
 ### Package and Run
 
 ```sh
-mvn clean package
+gradle clean assemble
 java -jar ./target/dmn-pmml-springboot-example.jar
 ```
 
@@ -33,7 +33,7 @@ Validate the functionality of DMN models before deploying them into a production
 To define test scenarios you need to create a .scesim file inside your project and link it to the DMN model you want to be tested. Run all Test Scenarios, executing:
 
 ```sh
-mvn clean test
+gradle clean test
 ```
 See results in surefire test report `target/surefire-reports` 
 
